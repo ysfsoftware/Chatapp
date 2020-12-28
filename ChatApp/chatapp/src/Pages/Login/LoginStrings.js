@@ -1,6 +1,6 @@
 const LoginString={
     ID:'id',
-    PhotoURL:'photourl',
+    ProfilURL:'profilurl',
     userName:'nickname',
     Email:'email',
     Password:'image/',

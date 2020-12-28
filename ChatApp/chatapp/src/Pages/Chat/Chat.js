@@ -2,6 +2,8 @@ import React from 'react'
 import LoginString from "../Login/LoginStrings";
 import firebase from "../../Services/firebase";
 import './Chat.css';
+import ChatBox from '../ChatBox/ChatBox';
+import WelcomeBord from '../Welcome/Welcome';
 import ReactLoading from 'react-loading';
 
 export default class Chat extends React.Component{
@@ -16,7 +18,7 @@ export default class Chat extends React.Component{
         }
         this.currentUserName = localStorage.getItem(LoginString.userName);
         this.currentUserId = localStorage.getItem(LoginString.ID)
-        this.currentUserPhoto = localStorage.getItem(LoginString.PhotoURL);
+        this.currentUserPhoto = localStorage.getItem(LoginString.ProfilURL);
         this.currentUserDocumentId = localStorage.getItem(LoginString.FirebaseDocumentId)
 
         this.searchUsers = [];
@@ -67,7 +69,7 @@ this.props.history.push('/profile')
                         id: item.data().id,
                         userName: item.data().userName,
                         messages: item.data().messages,
-                        PhotoURL: item.data().PhotoURL,
+                        ProfilURL: item.data().ProfilURL,
                         description: item.data().description
                     }
                 )
@@ -151,7 +153,7 @@ this.props.history.push('/profile')
 
                             <img
                             className = "viewAvatarItem"
-                            src = {item.PhotoURL}
+                            src = {item.ProfilURL}
                             alt = ""
                             />
                             <div className="viewWrapContentItem">
@@ -207,7 +209,7 @@ this.props.history.push('/profile')
 
                             <img
                             className = "viewAvatarItem"
-                            src = {item.PhotoURL}
+                            src = {item.ProfilURL}
                             alt = ""
                             />
                             <div className="viewWrapContentItem">
@@ -249,15 +251,25 @@ this.props.history.push('/profile')
                         </div>
                         <div classname="rootsearchbar">
                             <div classname="input-container">
-                                <i class="fa fa-search icon"></i>
+                            <i class="fa fa-search icon"></i>
                                 <input class="input-field"
                                 type="text"
                                 onChange={this.searchHandler}
                                 placeholder="Ara"
-                                />                                
+                                />                         
                             </div>
                         </div>
                         {this.state.displayedContacts}
+                    </div>
+                    <div className="viewBoard">
+                        {this.state.currentPeerUser ? (
+                            <ChatBox currentPeerUser = {this.state.currentPeerUser}
+                            showToast = {this.state.showToast}
+                            />):(<WelcomeBord
+                                currentUserName={this.currentUserName}
+                                currentUserPhoto={this.currentUserPhoto}/>
+                        
+                    )}
                     </div>
                 </div>               
             </div>

@@ -6,7 +6,7 @@ function Header(){
     return(
         <header class="header-login-signup">
             <div class="header-limiter">
-                <h1><a href="/">Chat<span>App</span></a></h1>
+                <h1><a href="/">Talk<span>To</span></a></h1>
                 <nav>
                     <Link to="/">Anasayfa</Link>
                     <a class="selected"><Link to="/">Hakkında</Link></a>

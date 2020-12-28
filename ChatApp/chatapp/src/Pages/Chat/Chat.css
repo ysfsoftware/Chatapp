@@ -141,6 +141,7 @@
     max-height: 100vh;
     min-height: 90vh;
     height: auto;
+    width: 50vh;
     /* padding-top: 10px; */
     /* padding-bottom: 10px; */
    
@@ -278,15 +279,14 @@
     padding: 10px;
     background: rgb(148, 167, 185);
     color: white;
-    min-width: 50px;
-    text-align: center;
+    min-width: 30px;
+    text-align: left;
     border-radius: 10px;
     opacity: 0.5;
   }
   
   .input-field {
     width: 100%;
-   
     border-radius: 10px;
     
     /* margin-right: 85%; */
@@ -294,7 +294,7 @@
     box-shadow: none ! important;
     outline: none ! important;
     
-    width: 100%; 
+    width: 85%; 
     padding: 10px; 
     text-align: center; 
   }

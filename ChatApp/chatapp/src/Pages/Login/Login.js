@@ -20,7 +20,6 @@ export default class Login extends React.Component{
         super(props);
         this.state={
             isLoading: true,
-            error: "",
             email: "",
             password: ""
         }
@@ -47,7 +46,7 @@ export default class Login extends React.Component{
 
     async handleSubmit(event){
         event.preventDefault();
-        this.setState({error:""});
+
 
         await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
         .then(async result=>{
@@ -64,16 +63,14 @@ export default class Login extends React.Component{
                         localStorage.setItem(LoginString.userName, currentdata.name)
                         localStorage.setItem(LoginString.Email, currentdata.email)
                         localStorage.setItem(LoginString.Password, currentdata.password)
-                        localStorage.setItem(LoginString.PhotoURL, currentdata.PhotoURL)
+                        localStorage.setItem(LoginString.ProfilURL, currentdata.ProfilURL)
                         localStorage.setItem(LoginString.Description, currentdata.description)           
                      })
                 })   
             }
             this.props.history.push('/chat')
         }).catch(function(error){
-            this.setState({
-                error: "Bir hata oluştu lütfen tekrar deneyiniz"
-            })
+           document.getElementById('1').innerHTML="Yanlış E-mail/Password veya zayıf bağlantı"
         })
     }
     render(){
@@ -139,7 +136,7 @@ export default class Login extends React.Component{
                             <Link to="/">
                                 <button class="btn">
                                     <i class="fa fa-home"></i>
-                                    WebChat
+                                    TalkTo
                                 </button>
                             </Link>
                         </div>
@@ -195,6 +192,9 @@ export default class Login extends React.Component{
                       <Link to="/signup" variant="body2">
                           Kayıt Ol
                       </Link>
+                  </div>
+                  <div className="error">
+                      <p id='1' style={{color:'red'}}></p>
                   </div>
                         </form>
                     </div>

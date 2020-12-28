@@ -49,7 +49,7 @@ export default class SignUp extends Component{
                     localStorage.setItem(LoginString.userName, userName);
                     localStorage.setItem(LoginString.Email, email);
                     localStorage.setItem(LoginString.Password, password);
-                    localStorage.setItem(LoginString.PhotoURL, "");
+                    localStorage.setItem(LoginString.ProfilURL, "");
                     localStorage.setItem(LoginString.UPLOAD_CHANGED, 'state_changed');
                     localStorage.setItem(LoginString.Description, "");
                     localStorage.setItem(LoginString.FirebaseDocumentId, docRef.id);
@@ -96,7 +96,7 @@ export default class SignUp extends Component{
                     </div>
                     <div>
                         <Link to="/">
-                            <button class="btn"><i class="fa fa-home"></i>WebChat</button>
+                            <button class="btn"><i class="fa fa-home"></i>TALK TO</button>
                         </Link>
                     </div>
                 </Card>

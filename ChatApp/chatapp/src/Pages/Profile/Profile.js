@@ -14,12 +14,12 @@ export default class Profile extends React.Component{
             isLoading: false,
             documentKey: localStorage.getItem(LoginString.FirebaseDocumentId),
             id: localStorage.getItem(LoginString.ID),
-            userName: localStorage.getItem(LoginString.userName),
+            name: localStorage.getItem(LoginString.userName),
             aboutMe: localStorage.getItem(LoginString.Description),
-            photoUrl: localStorage.getItem(LoginString.PhotoURL),
+            profilUrl: localStorage.getItem(LoginString.ProfilURL),
         }
         this.newPhoto = null
-        this.newPhotoUrl = ""
+        this.newprofilUrl = ""
     }
     componentDidMount(){
         if(!localStorage.getItem(LoginString.ID)){
@@ -44,7 +44,7 @@ export default class Profile extends React.Component{
                 return 
             }
             this.newPhoto = event.target.files[0]
-            this.setState({photoUrl: URL.createObjectURL(event.target.files[0])})
+            this.setState({profilUrl: URL.createObjectURL(event.target.files[0])})
         }else{
             this.props.showToast(0, "Giriş dosyasında bir sorun var")
         }
@@ -72,9 +72,9 @@ export default class Profile extends React.Component{
             this.updateUserInfo(false ,null)
         }
     }
-    updateUserInfo =(isUpdatedPhotoURL, downloadURL)=>{
+    updateUserInfo =(isUpdatedProfilURL, downloadURL)=>{
         let newinfo
-        if(isUpdatedPhotoURL){
+        if(isUpdatedProfilURL){
             newinfo={
                 userName: this.state.name,
                 Description: this.state.aboutMe,
@@ -91,8 +91,8 @@ export default class Profile extends React.Component{
             .then(data=>{
                 localStorage.setItem(LoginString.userName, this.state.name)
                 localStorage.setItem(LoginString.Description, this.state.aboutMe)
-                if(isUpdatedPhotoURL){
-                    localStorage.setItem(LoginString.PhotoURL, downloadURL)
+                if(isUpdatedProfilURL){
+                    localStorage.setItem(LoginString.ProfilURL, downloadURL)
                 }
                 this.setState({isLoading: false})
                 this.props.showToast(1, 'Yükleme başarılı')
@@ -105,7 +105,7 @@ export default class Profile extends React.Component{
                 <div className="headerprofile">
                     <span>PROFİL</span>
                 </div>
-                <img className="avatar" alt="" src={this.state.photoUrl}/>
+                <img className="avatar" alt="" src={this.state.profilUrl}/>
                 <div className="viewWrapInputFile">
                     <img
                     className="imgInputFile"
